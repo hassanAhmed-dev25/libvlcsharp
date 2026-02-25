@@ -178,6 +178,17 @@ namespace LibVLCSharp.Shared
         }
 
         /// <summary>
+        /// Create a media from a FileInfo
+        /// </summary>
+        public Media(LibVLC libVLC, FileInfo fileInfo, params string[] options)
+            : this(libVLC ?? throw new ArgumentNullException(nameof(libVLC)),
+                   fileInfo?.FullName ?? throw new ArgumentNullException(nameof(fileInfo)),
+                   FromType.FromPath,
+                   options)
+        {
+        }
+
+        /// <summary>
         /// Media Constructs a libvlc Media instance
         /// </summary>
         /// <param name="libVLC">A libvlc instance</param>
